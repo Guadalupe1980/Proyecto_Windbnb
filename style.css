@@ -1,0 +1,8 @@
+/* 1. Importamos la fuente de Montserrat*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@405;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* 2. La aplicamos a todo el sitio */
+  --font-sans: 'Montserrat', sans-serif;
+}

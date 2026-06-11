@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./scripts/dataApi.js"></script>
+  <script type="module" src="./scripts/bucleCards.js"></script>
+  <script type="module" src="./scripts/searchCity.js"></script>
+  <script type="module" src="./scripts/numberOfPeople.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>proyecto-windbnb</title>
+</head>
+
+<body>
+  <!--ENCABEZADO PRINCIPAL-->
+  <header class="bg-gray-100 shadow">
+    <img src="/icons/logo-f7862584.svg" alt="logo-Windbnb" class=" object-cover w-60 h-7 pl-8 mt-5 lg:pl-20">
+    <!--CONTENEDOR DE INPUTS-->
+    <nav>
+      <form id="search-form">
+        <div
+          class="flex items-stretch justify-center mt-10 mx-auto bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden max-w-90 lg:-mt-5 lg:ml-auto lg:mr-20">
+          <label for="locationInput"
+            class="flex flex-col flex-1 p-5 cursor-pointer bg-white transition border-r border-gray-200 md:justify-start">
+            <span
+              class="hidden md:block lg:hidden text-[10px] font-extrabold text-gray-900 tracking-wider uppercase">Location</span>
+            <input type="text" placeholder="Add Location" id="locationInput"
+              class="w-full bg-transparent text-sm text-gray-400 placeholder-gray-300 focus:outline-none mt-0.5">
+          </label>
+
+          <label for="guestsInput"
+            class="flex flex-col flex-1 p-5 cursor-pointer hover:bg-white transition border-r border-gray-200 md:justify-normal">
+            <span
+              class="hidden md:block lg:hidden text-[10px] font-extrabold text-gray-900 tracking-wider uppercase">Guests</span>
+            <input type="text" placeholder="Add guests" id="guestsInput"
+              class="w-full bg-transparent text-sm text-gray-400 placeholder-gray-300 focus:outline-none mt-0.5"
+              readonly>
+          </label>
+
+          <button type="submit" id="btn-search" aria-label="Buscar"
+            class="px-5 flex items-center justify-center bg-white hover:bg-gray-50 transition active:scale-95">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+              stroke="currentColor" class="w-5 h-5 text-red-500">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.604 10.604Z" />
+            </svg>
+          </button>
+        </div>
+
+        <!--CONTENEDOR DE ACCIONES-->
+        <fieldset>
+          <legend>Selección de huéspedes</legend>
+
+          <section>
+            <h3>Adults</h3>
+            <p>Ages 13 or above</p>
+            <button type="button" aria-label="Restar adulto">-</button>
+            <output for="btn-add-adult btn-sub-adult">0</output>
+            <button type="button" aria-label="Sumar adulto">+</button>
+          </section>
+
+          <section>
+            <h3>Children</h3>
+            <p>Ages 2 to 12</p>
+            <button type="button" aria-label="Restar niño">-</button>
+            <output for="btn-add-child btn-sub-child">0</output>
+            <button type="button" aria-label="Sumar niño">+</button>
+          </section>
+        </fieldset>
+
+      </form>
+    </nav>
+  </header>
+
+  </header>
+
+  <main class="px-4 max-w-11/12 mx-auto">
+    <div class="flex justify-between items-center mt-8 mb-10">
+      <h1 class="text-3xl font-bold text-gray-900 tracking-tight">Stays in Finland</h1>
+      <span class="text-xl font-semibold text-gray-500">12+ stays</span>
+    </div>
+    <!--CONTENEDOR DE CARDS-->
+    <section id="CardsContainer" class="md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 gap-10"></section>
+  </main>
+</body>
+
+</html>
