@@ -33,4 +33,4 @@ function apartmentSearch(){
 apartmentSearch()
 
 /*EXPORTAMOS EL OBJETO AL LLAMADO GLOBAL*/
-export{apartmentSearch, filteredRooms}
+export{apartmentSearch, filteredRooms, searchInput}
