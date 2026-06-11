@@ -40,6 +40,5 @@ function showRooms(groupOfStays) {
   }
 }
 
-
 /*EXPORTAMOS EL OBJETO AL LLAMADO GLOBAL*/
 export{showRooms, cardBox}

@@ -16,7 +16,7 @@
 <body>
   <!--ENCABEZADO PRINCIPAL-->
   <header class="bg-gray-100 shadow">
-    <img src="/icons/logo-f7862584.svg" alt="logo-Windbnb" class="h-5 w-auto object-contain pl-8 mt-5 lg:h-6 lg:pl-20">
+    <img src="/icons/logo-f7862584.svg" alt="logo-Windbnb" class="h-6 w-auto object-contain pl-8 mt-5 lg:h-8 lg:pl-20">
     <!--CONTENEDOR DE INPUTS-->
     <nav>
       <form id="search-form">
@@ -25,7 +25,7 @@
           <label for="locationInput"
             class="flex flex-col flex-1 p-5 cursor-pointer bg-white transition border-r border-gray-200 md:justify-start">
             <span
-              class="hidden md:block lg:hidden text-[10px] font-extrabold text-gray-900 tracking-wider uppercase">Location</span>
+              class="hidden md:hidden lg:hidden text-[10px] font-extrabold text-gray-900 tracking-wider uppercase">Location</span>
             <input type="text" placeholder="Add Location" id="locationInput"
               class="w-full bg-transparent text-sm text-gray-400 placeholder-gray-300 focus:outline-none mt-0.5">
           </label>
@@ -33,7 +33,7 @@
           <label for="guestsInput"
             class="flex flex-col flex-1 p-5 cursor-pointer hover:bg-white transition border-r border-gray-200 md:justify-normal">
             <span
-              class="hidden md:block lg:hidden text-[10px] font-extrabold text-gray-900 tracking-wider uppercase">Guests</span>
+              class="hidden md:hidden lg:hidden text-[10px] font-extrabold text-gray-900 tracking-wider uppercase">Guests</span>
             <input type="text" placeholder="Add guests" id="guestsInput"
               class="w-full bg-transparent text-sm text-gray-400 placeholder-gray-300 focus:outline-none mt-0.5"
               readonly>
@@ -79,7 +79,7 @@
   <main class="px-4 max-w-11/12 mx-auto">
     <div class="flex justify-between items-center mt-8 mb-10">
       <h1 class="text-3xl font-bold text-gray-900 tracking-tight">Stays in Finland</h1>
-      <span class="text-xl font-semibold text-gray-500">12+ stays</span>
+      <span id="stays-counter" class="text-lg font-semibold text-gray-500">0</span>
     </div>
     <!--CONTENEDOR DE CARDS-->
     <section id="CardsContainer" class="md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 gap-10"></section>
