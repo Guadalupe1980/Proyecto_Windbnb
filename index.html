@@ -19,9 +19,9 @@
   <header>
     <img src="/icons/logo-f7862584.svg" alt="logo-Windbnb"
       class="h-6 w-auto object-contain pl-8 mt-5 lg:h-8 lg:pl-20" />
-    <!--CONTENEDOR DE INPUTS PRINCIPALES-->
     <nav>
       <form id="search-form">
+        <!--CONTENEDOR DE INPUTS PRINCIPALES-->
         <div
           class="flex md:flex-row items-stretch justify-center mt-10 mx-auto bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden max-w-90 lg:-mt-5 lg:ml-auto lg:mr-20">
           <label
@@ -90,13 +90,13 @@
                 <div class="flex items-center gap-4 mt-3">
                   <button
                     class="bg-gray-200 h-6 w-6 border-2 border-gray-400 rounded-sm text-gray-500 hover:border-gray-700 flex items-center justify-center text-sm"
-                    type="button" aria-label="Restar adulto">
+                    type="button" aria-label="Restar adulto" id="btnRestaAdls1">
                     -
                   </button>
-                  <span class="text-md font-bold text-gray-800 w-4 text-center">0</span>
+                  <span class="text-md font-bold text-gray-800 w-4 text-center" id="counterAdults">0</span>
                   <button
                     class="bg-gray-200 h-6 w-6 border-2 border-gray-400 rounded-sm text-gray-500 hover:border-gray-700 flex items-center justify-center text-sm"
-                    type="button" aria-label="Sumar adulto">
+                    type="button" aria-label="Sumar adulto" id="btnSumaAdls2">
                     +
                   </button>
                 </div>
@@ -108,13 +108,13 @@
                 <div class="flex items-center gap-4 mt-3">
                   <button
                     class="bg-gray-200 h-6 w-6 border-2 border-gray-400 rounded-sm text-gray-500 hover:border-gray-700 flex items-center justify-center text-sm"
-                    type="button" aria-label="Restar niño">
+                    type="button" aria-label="Restar niño" id="btnResChildren1">
                     -
                   </button>
-                  <span class="text-md font-bold text-gray-800 w-4 text-center">0</span>
+                  <span class="text-md font-bold text-gray-800 w-4 text-center" id="counterChildren">0</span>
                   <button
                     class="bg-gray-200 h-6 w-6 border-2 border-gray-400 rounded-sm text-gray-500 hover:border-gray-700 flex items-center justify-center text-sm"
-                    type="button" aria-label="Sumar niño">
+                    type="button" aria-label="Sumar niño" id="btnSumaChildren2">
                     +
                   </button>
                 </div>

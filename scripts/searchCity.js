@@ -20,10 +20,19 @@ function apartmentSearch(){
     let search = searchInput.value.toLowerCase();
     filteredRooms = stayWindbnb;
 
-    filteredRooms = filteredRooms.filter(stay => {const fullLocation = `${stay.city}, ${stay.country}`.toLowerCase(); return fullLocation.includes(search)})
+    //Capturar cuántos adultos y niños hay en ese instante:
+    let totalGuests = parseInt(document.querySelector("#counterAdults")?.textContent || 0) + 
+                       parseInt(document.querySelector("#counterChildren")?.textContent || 0);
+
+    //Validacion(Ciudad Y Huéspedes):
+    filteredRooms = filteredRooms.filter(stay => {
+        const fullLocation = `${stay.city}, ${stay.country}`.toLowerCase(); 
+        return fullLocation.includes(search) && stay.maxGuests >= totalGuests;
+    });
 
     cardBox.innerHTML= ""
     showRooms(filteredRooms);
+
 
     /*Contador en tiempo real de las sugerencias*/
     if(filteredRooms.length > 0){
@@ -37,7 +46,12 @@ function apartmentSearch(){
 
     // Extraer ubicaciones únicas ("Ciudad, País") en una sola línea
     const uniqueLocations = Array.from(new Set (filteredRooms.map(uniqueLocs => `${uniqueLocs.city}, ${uniqueLocs.country}`)))
-    if(uniqueLocations.length === 0) return suggestionsBox.classList.add("hidden");
+
+    // 1. Verifica si lo que escribió el usuario coincide exactamente con una ciudad
+    const exactMatch = uniqueLocations.some(loc => loc.toLowerCase() === search);
+    if (uniqueLocations.length === 0 || exactMatch) {
+        return suggestionsBox.classList.add("hidden");
+    }
 
     // Renderizar todas las sugerencias juntas
     suggestionsBox.classList.remove("hidden");
@@ -49,10 +63,9 @@ function apartmentSearch(){
             <span>${locs}</span>
         </div>
         `).join('');
-
 }
 
-// 3. Delegación de eventos para el click (Escucha el contenedor, no cada hijo)
+//Delegación de eventos para el click (Escucha el contenedor, no cada hijo)
 suggestionsBox.addEventListener("click", (event) => {
   const item = event.target.closest(".suggestion-item");
   if (item) {
