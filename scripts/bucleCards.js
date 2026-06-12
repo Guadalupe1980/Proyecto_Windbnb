@@ -13,6 +13,7 @@ function showRooms(groupOfStays) {
       superHostBadge = `<span class="border border-gray-700 text-gray-700 text-xs font-bold px-2 py-1 rounded-full uppercase mr-2">Superhost</span>`;
     }
 
+    // verificamos si el dato es un numero valido
     let bedsText = groupOfStays[i].beds ? `. ${groupOfStays[i].beds} beds` : "";
 
     cardBox.innerHTML += `

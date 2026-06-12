@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/public/icons/logo-f7862584.svg" />
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css" />
   <script type="module" src="./scripts/dataApi.js"></script>
   <script type="module" src="./scripts/bucleCards.js"></script>
   <script type="module" src="./scripts/searchCity.js"></script>
@@ -17,30 +17,28 @@
 <body>
   <!--ENCABEZADO PRINCIPAL-->
   <header>
-    <img src="/icons/logo-f7862584.svg" alt="logo-Windbnb" class="h-6 w-auto object-contain pl-8 mt-5 lg:h-8 lg:pl-20">    
-    <!--CONTENEDOR DE INPUTS-->
+    <img src="/icons/logo-f7862584.svg" alt="logo-Windbnb"
+      class="h-6 w-auto object-contain pl-8 mt-5 lg:h-8 lg:pl-20" />
+    <!--CONTENEDOR DE INPUTS PRINCIPALES-->
     <nav>
       <form id="search-form">
         <div
-          class="flex items-stretch justify-center mt-10 mx-auto bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden max-w-90 lg:-mt-5 lg:ml-auto lg:mr-20">
-          <label for="locationInput"
+          class="flex md:flex-row items-stretch justify-center mt-10 mx-auto bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden max-w-90 lg:-mt-5 lg:ml-auto lg:mr-20">
+          <label
             class="flex flex-col flex-1 p-5 cursor-pointer bg-white transition border-r border-gray-200 md:justify-start">
-            <span
-              class="hidden md:hidden lg:hidden text-[10px] font-extrabold text-gray-900 tracking-wider uppercase">Location</span>
-            <input type="text" placeholder="Add Location" id="locationInput"
-              class="w-full bg-transparent text-sm text-gray-400 placeholder-gray-300 focus:outline-none mt-0.5"readonly>
-          </label>
-
-          <label for="guestsInput"
-            class="flex flex-col flex-1 p-5 cursor-pointer hover:bg-white transition border-r border-gray-200 md:justify-normal">
-            <span
-              class="hidden md:hidden lg:hidden text-[10px] font-extrabold text-gray-900 tracking-wider uppercase">Guests</span>
-            <input type="text" placeholder="Add guests" id="guestsInput"
+            <input type="text" placeholder="Add Location" id="mainLocationP"
               class="w-full bg-transparent text-sm text-gray-400 placeholder-gray-300 focus:outline-none mt-0.5"
-              readonly>
+              readonly />
           </label>
 
-          <button type="button" id="btn-search" aria-label="Buscar"
+          <label
+            class="flex flex-col flex-1 p-5 cursor-pointer hover:bg-white transition border-r border-gray-200 md:justify-normal">
+            <input type="text" placeholder="Add guests" id="mainGuestP"
+              class="w-full bg-transparent text-sm text-gray-400 placeholder-gray-300 focus:outline-none mt-0.5"
+              readonly />
+          </label>
+
+          <button id="mainButtonP" type="button" aria-label="Buscar"
             class="px-5 flex items-center justify-center bg-white hover:bg-gray-50 transition active:scale-95">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
               stroke="currentColor" class="w-5 h-5 text-red-500">
@@ -50,36 +48,101 @@
           </button>
         </div>
 
-    <!--CONTENEDOR DE ACCIONES-->
-    <div id="mainAction" class="hidden bg-white shadow-xl w-full min-h-190 absolute top-0 left-0 z-50 border-b border-gray-100">
-      <fieldset class="relative">
-        <legend class="font-bold p-3">Edit your Search</legend>
+        <!--CONTENEDOR DE ACCIONES DENTRO DEL MENU-DESPEGABLE-->
+        <div id="mainAction"
+          class="hidden flex-col md:flex-row bg-white shadow-2xl w-full h-auto absolute top-0 left-0 z-50 border-b border-gray-100 pb-12">
+          <fieldset class="relative">
+            <button id="mainXs" type="button"
+              class="absolute -top-12 right-6 text-xl font-bold text-gray-800 focus:outline-none" aria-label="Close">
+              X
+            </button>
+            <legend class="font-bold text-xs p-6 pt-7 text-gray-800 md:text-sm">
+              Edit your Search
+            </legend>
 
-        <section>
-          <h3>Adults</h3>
-          <p>Ages 13 or above</p>
-          <button type="button" aria-label="Restar adulto">-</button>
-          <output for="btn-add-adult btn-sub-adult">0</output>
-          <button type="button" aria-label="Sumar adulto">+</button>
-        </section>
+            <div
+              class="relative flex flex-col md:grid md:grid-cols-3 items-stretch justify-center mx-auto bg-white rounded-2xl shadow-md border border-gray-100 max-w-150">
+              <label for="locationInput"
+                class="relative flex flex-col p-4 px-6 cursor-pointer border-b md:border-b-0 md:border-r border-gray-200 md:justify-start">
+                <span class="text-[10px] font-extrabold text-gray-900 tracking-wider uppercase">Location</span>
+                <input type="text" placeholder="Add Location" id="locationInput"
+                  class="w-full bg-transparent text-sm text-gray-800 font-medium placeholder-gray-300 focus:outline-none mt-0.5" />
+                <!--CONTENEDOR DE SUGERENCIAS-->
+                <div id="suggestionsBox"
+                  class="absolute left-0 top-full w-full bg-white z-50 px-6 py-4 flex-col gap-4 max-h-60 shadow-xl rounded-b-2xl hidden">
+                </div>
+              </label>
 
-        <section>
-          <h3>Children</h3>
-          <p>Ages 2 to 12</p>
-          <button type="button" aria-label="Restar niño">-</button>
-          <output for="btn-add-child btn-sub-child">0</output>
-          <button type="button" aria-label="Sumar niño">+</button>
-        </section>
-      </fieldset>
-    </div>
+              <label for="guestsInput"
+                class="flex flex-col p-4 px-6 cursor-pointer hover:bg-white md:justify-normal md:border-r border-gray-200">
+                <span class="text-[10px] font-extrabold text-gray-900 tracking-wider uppercase">Guests</span>
+                <input type="text" placeholder="Add guests" id="guestsInput"
+                  class="w-full bg-transparent text-sm text-gray-800 font-medium placeholder-gray-300 focus:outline-none mt-0.5"
+                  readonly />
+              </label>
+            </div>
 
+            <!--CONTENEDOR DE ACCIONES DEL MENU DESPEGABLE-->
+            <div class="flex flex-col md:w-1/2 md:ml-auto md:px-8">
+              <section class="mx-8 md:mx-0 my-9">
+                <h3 class="font-bold text-sm text-gray-800">Adults</h3>
+                <p class="text-gray-300 text-sm mt-0.5">Ages 13 or above</p>
+                <div class="flex items-center gap-4 mt-3">
+                  <button
+                    class="bg-gray-200 h-6 w-6 border-2 border-gray-400 rounded-sm text-gray-500 hover:border-gray-700 flex items-center justify-center text-sm"
+                    type="button" aria-label="Restar adulto">
+                    -
+                  </button>
+                  <span class="text-md font-bold text-gray-800 w-4 text-center">0</span>
+                  <button
+                    class="bg-gray-200 h-6 w-6 border-2 border-gray-400 rounded-sm text-gray-500 hover:border-gray-700 flex items-center justify-center text-sm"
+                    type="button" aria-label="Sumar adulto">
+                    +
+                  </button>
+                </div>
+              </section>
+
+              <section class="mx-8 md:mx-0  my-9 -mt-2">
+                <h3 class="font-bold text-sm text-gray-800">Children</h3>
+                <p class="text-gray-300 text-sm mt-0.5">Ages 13 or above</p>
+                <div class="flex items-center gap-4 mt-3">
+                  <button
+                    class="bg-gray-200 h-6 w-6 border-2 border-gray-400 rounded-sm text-gray-500 hover:border-gray-700 flex items-center justify-center text-sm"
+                    type="button" aria-label="Restar niño">
+                    -
+                  </button>
+                  <span class="text-md font-bold text-gray-800 w-4 text-center">0</span>
+                  <button
+                    class="bg-gray-200 h-6 w-6 border-2 border-gray-400 rounded-sm text-gray-500 hover:border-gray-700 flex items-center justify-center text-sm"
+                    type="button" aria-label="Sumar niño">
+                    +
+                  </button>
+                </div>
+                <div class="w-full md:w-auto flex items-center justify-center p-3 md:p-0 md:px-4 mt-8 md:mt-0 md:absolute md:top-3 md:left-[50%] md:translate-x-30 z-50">
+                  <!--BOTON BUSCAR DEL MENU DESPEGABLE-->
+                  <button type="button" id="btn-searchS" aria-label="Buscar"
+                    class="px-6 py-2.5 flex items-center justify-center gap-2 bg-[#eb5757] text-white text-md font-medium  rounded-2xl shadow-md hover:bg-red-500 transition active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                      stroke="currentColor" class="w-4 h-4 text-white">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.604 10.604Z" />
+                    </svg>
+                    <span>search</span>
+                  </button>
+                </div>
+            </div>
+            </section>
+          </fieldset>
+        </div>
       </form>
     </nav>
   </header>
 
   <main class="px-4 max-w-11/12 mx-auto">
     <div class="flex justify-between items-center mt-8 mb-10">
-      <h1 class="text-3xl font-bold text-gray-900 tracking-tight">Stays in Finland</h1>
+      <h1 class="text-3xl font-bold text-gray-900 tracking-tight">
+        Stays in Finland
+      </h1>
       <span id="stays-counter" class="text-lg font-semibold text-gray-500"></span>
     </div>
     <!--CONTENEDOR DE CARDS-->
